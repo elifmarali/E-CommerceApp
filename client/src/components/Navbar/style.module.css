@@ -1,0 +1,44 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fa721d;
+    padding: 20px 40px;
+    color: white;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.logo {
+    width: 300px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    gap: 10px;
+}
+
+.menuItem {
+    display: block;
+    padding: 0 20px;
+}
+
+.menuItem a {
+    color: white !important;
+    font-size: 18px;
+}
+
+.menuItem:hover a {
+    color: #f6dfd0 !important;
+}
+
+.right {
+    width: 16%;
+    margin-left: 40px;
+}
