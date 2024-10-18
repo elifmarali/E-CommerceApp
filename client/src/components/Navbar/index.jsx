@@ -12,16 +12,16 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li className={styles.menuItem}>
-            <Link to="/products">Product</Link>
+            <Link to="/products">Products</Link>
           </li>
         </ul>
       </div>
       <div className={styles.right}>
         <Stack spacing={4} direction="row" align="center">
-          <Button colorScheme="pink" size="md">
+          <Button background="cyan.400" color={"white"} size="md" p="25px 30px">
             <Link to="/signin">Login</Link>
           </Button>
-          <Button colorScheme="pink" size="md">
+          <Button background="cyan.400" color={"white"} size="md" p="25px 30px">
             <Link to="/signup">Register</Link>
           </Button>
         </Stack>

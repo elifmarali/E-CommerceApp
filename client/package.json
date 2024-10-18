@@ -13,10 +13,14 @@
     "@chakra-ui/react": "^2.10.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "axios": "^1.7.7",
+    "dateformat": "^5.0.3",
     "framer-motion": "^11.11.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.27.0"
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.27.0",
+    "react-slideshow-image": "^4.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

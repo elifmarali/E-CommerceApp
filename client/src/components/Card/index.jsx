@@ -1,7 +1,10 @@
 import React from "react";
-import { Box, Button, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-function Card() {
+import dateFormat from "dateformat";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+function Card({ product }) {
   return (
     <Box
       borderRadius="lg"
@@ -9,22 +12,42 @@ function Card() {
       p="3"
       display="flex"
       flexDirection="column"
-      gap="4px"
-      alignItems="center"
     >
-      <Link to="" display="flex" flexDirection="column" alignItems="center">
-        <Image src="https://picsum.photos/250/300" display="flex"></Image>
-        <Box d="flex" alignItems="flex-start">
-          <Box d="flex" alignItems="baseline">
-            13/12/2002
+      <Carousel axis="horizontal">
+        {product?.photos?.map((item, i) => {
+          return (
+            <div>
+              <Image src={item} display="flex" h="250px" w="200px"></Image>
+            </div>
+          );
+        })}
+      </Carousel>
+      <Link to={`/products/${product?._id}`}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="flex-start"
+          width="100%"
+          marginLeft={1}
+          gap={2}
+        >
+          <Box d="flex" align="baseline">
+            {dateFormat(product?.createdAt, "dd/mm/yyyy")}
           </Box>
-          <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
-            Macbook Pro
+          <Box fontWeight="semibold" as="h2" lineHeight="tight" fontSize={20}>
+            {product?.title}
           </Box>
-          <Box>100 TL</Box>
+          <Box>{product?.price} TL</Box>
         </Box>
       </Link>
-      <Button colorScheme="pink" w="79%">
+      <Button
+        mt={4}
+        color={"black"}
+        background="#e3fe55"
+        w="100%"
+        transition="300ms all"
+        _hover={{ boxShadow: "1px 1px 1px 0px rgba(0, 0, 0, 0.2)" }}
+      >
         Add to Basket
       </Button>
     </Box>

@@ -1,10 +1,11 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #fa721d;
+    background-color: #8684aa;
     padding: 20px 40px;
     color: white;
     align-items: center;
+    height: 110px;
 }
 
 .left {
@@ -14,7 +15,24 @@
 }
 
 .logo {
-    width: 300px;
+    width: 130px;
+    background-color: #e2fe55d0;
+    font-weight: 900;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 24px;
+    border-radius: 20px;
+    transition: 600ms all;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: #e3fe55;
+}
+
+.logo:hover {
+    border: 3px solid rgba(0, 255, 255, 0.394);
 }
 
 .menu {
@@ -31,7 +49,7 @@
 
 .menuItem a {
     color: white !important;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .menuItem:hover a {
@@ -41,4 +59,16 @@
 .right {
     width: 16%;
     margin-left: 40px;
+}
+
+.right button {
+    color: black;
+    background-color: #e3fe55;
+    transition: 300ms all;
+    font-weight: 900;
+}
+
+.right button:hover {
+    background-color: black;
+    color: #e3fe55;
 }
