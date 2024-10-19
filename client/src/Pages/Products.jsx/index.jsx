@@ -4,26 +4,27 @@ import styles from "./style.module.css";
 import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
 import { Grid, GridItem } from "@chakra-ui/react";
+import { getProductList } from "../../api";
+import { useQuery } from "@tanstack/react-query";
 function Products() {
-  const [products, setProducts] = useState([]);
-  const getProductList = async () => {
-    try {
-      const response = await axios.get("http://localhost:4000/product");
-      setProducts(response.data);
-    } catch (err) {
-      alert("ERR [Get Products List] : " + err.message);
-    }
-  };
-  useEffect(() => {
-    getProductList();
-  }, []);
-  console.log("Product", products);
+  const { status, isLoading, error, data } = useQuery(
+    ["getProductList"], // query key
+    getProductList // query function
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return alert("ERR [Products Page] : " + error.message);
+  }
 
   return (
     <div>
       <Navbar />
-      <Grid templateColumns="repeat(4, 1fr)" gap={6} padding="20px 40px">
-        {products?.map((product, i) => {
+      <Grid templateColumns="repeat(4, 10fr)" gap={6} padding="20px 40px">
+        {data?.map((product, i) => {
           return <Card product={product} key={product._id} />;
         })}
       </Grid>

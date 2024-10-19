@@ -17,7 +17,13 @@ function Card({ product }) {
         {product?.photos?.map((item, i) => {
           return (
             <div>
-              <Image src={item} display="flex" h="250px" w="200px"></Image>
+              <Image
+                src={item}
+                key={i}
+                display="flex"
+                h="250px"
+                w="200px"
+              ></Image>
             </div>
           );
         })}

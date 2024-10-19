@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./style.module.css";
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import {
   Badge,
   Box,
@@ -14,24 +13,22 @@ import {
 } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { getProductItem } from "../../api";
+import { useQuery } from "@tanstack/react-query";
 
 function ProductDetail() {
-  const [product, setProduct] = useState();
   const { id } = useParams();
-  const getProductItem = async () => {
-    try {
-      const response = await axios.get(`http://localhost:4000/product/${id}`);
-      setProduct(response.data);
-    } catch (err) {
-      alert("Err [Get Product Item] : " + err.message);
-    }
-  };
+  const { status, error, isLoading, data } = useQuery(
+    ["getProductItem", id],
+    () => getProductItem(id)
+  );
 
-  useEffect(() => {
-    getProductItem();
-  }, []);
-
-  console.log(product);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    alert("ERR Product Details Page :", error.message);
+  }
 
   return (
     <div>
@@ -39,10 +36,10 @@ function ProductDetail() {
       <Flex margin="10px 20px" p="10px" justifyContent={"center"} gap="50px">
         <Center w="40%">
           <Carousel axis="horizontal">
-            {product?.photos?.map((item, i) => {
+            {data?.photos?.map((item, i) => {
               return (
                 <div>
-                  <img src={item} />
+                  <img src={item} key={i} />
                 </div>
               );
             })}
@@ -75,16 +72,16 @@ function ProductDetail() {
               fontSize={30}
               padding="16px 0"
             >
-              {product?.title}
+              {data?.title}
             </Box>
 
             <Box color={"gray.500"} padding="0 0 10px 0">
-              {product?.description}
+              {data?.description}
             </Box>
 
             <Box display="flex" alignItems="center" padding="16px 0">
               <Box as="span" color="gray.600" fontSize="xl">
-                {product?.price} TL
+                {data?.price} TL
               </Box>
             </Box>
           </Box>
