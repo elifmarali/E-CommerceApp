@@ -6,7 +6,9 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.left}>
-        <div className={styles.logo}>Logoo</div>
+        <Link className={styles.logo} to="/">
+          Logoo
+        </Link>
         <ul className={styles.menu}>
           <li className={styles.menuItem}>
             <Link to="/">Home</Link>
@@ -17,11 +19,33 @@ function Navbar() {
         </ul>
       </div>
       <div className={styles.right}>
-        <Stack spacing={4} direction="row" align="center">
-          <Button background="cyan.400" color={"white"} size="md" p="25px 30px">
-            <Link to="/signin">Login</Link>
+        <Stack
+          spacing={4}
+          direction={{ base: "column", sm: "column", lg: "row" }}
+          align="center"
+        >
+          <Button
+            background="cyan.400"
+            color={"white"}
+            size={{
+              base: "xs",
+              sm: "sm",
+              md: "md",
+              lg: "lg",
+            }}
+          >
+            <Link to="/signin"> Login </Link>
           </Button>
-          <Button background="cyan.400" color={"white"} size="md" p="25px 30px">
+          <Button
+            background="cyan.400"
+            color={"white"}
+            size={{
+              base: "xs",
+              sm: "sm",
+              md: "md",
+              lg: "lg",
+            }}
+          >
             <Link to="/signup">Register</Link>
           </Button>
         </Stack>

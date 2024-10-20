@@ -16,6 +16,7 @@
 
 .logo {
     width: 130px;
+    height: 60px;
     background-color: #e2fe55d0;
     font-weight: 900;
     padding: 20px;
@@ -30,6 +31,35 @@
     background-color: rgb(0, 0, 0);
     color: #e3fe55;
 }
+
+@media screen and (max-width:768px) {
+    .logo {
+        width: 80px;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 15px;
+    }
+
+    .menuItem a {
+        font-size: 16px !important;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+    .logo {
+        width: 50px;
+        padding: 6px;
+        font-size: 12px;
+        border-radius: 10px;
+    }
+
+    .menuItem a {
+        font-size: 14px !important;
+    }
+}
+
+
 
 .logo:hover {
     border: 3px solid rgba(0, 255, 255, 0.394);
@@ -49,7 +79,7 @@
 
 .menuItem a {
     color: white !important;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .menuItem:hover a {
@@ -57,7 +87,7 @@
 }
 
 .right {
-    width: 16%;
+    width: 10rem;
     margin-left: 40px;
 }
 
@@ -66,9 +96,18 @@
     background-color: #e3fe55;
     transition: 300ms all;
     font-weight: 900;
+    padding: 10px 16px;
 }
 
 .right button:hover {
     background-color: black;
     color: #e3fe55;
+}
+
+
+@media screen and (max-width:480px) {
+    .right {
+        display: flex;
+        flex-direction: column;
+    }
 }

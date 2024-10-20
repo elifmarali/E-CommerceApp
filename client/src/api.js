@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getProductList = async () => {
+export const getProductList = async ({ pageParam = 0 }) => {
     try {
-        const response = await axios.get("http://localhost:4000/product");
+        const response = await axios.get(`http://localhost:4000/product?page=${pageParam}`);
         return response.data;
     } catch (err) {
         alert("ERR [Get Products List] : " + err.message);
