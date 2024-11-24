@@ -10,6 +10,7 @@ import Signin from "./Pages/Auth/Signin";
 import Signup from "./Pages/Auth/Signup";
 import Products from "./Pages/Products.jsx";
 import ProductDetail from "./Pages/ProductDetail";
+import Profile from "./Pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/products/:id",
     element: <ProductDetail />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 

@@ -1,3 +1,9 @@
 .signin {
     padding: 10px 40px;
 }
+
+.error {
+    color: rgb(251, 55, 55);
+    font-size: 14px;
+    margin-right: 3px;
+}
