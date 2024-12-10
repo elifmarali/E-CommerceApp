@@ -1,3 +1,23 @@
 .signup {
     padding: 10px 40px;
 }
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 800px;
+    padding: 50px 30px;
+    background-color: #8684aa;
+    border-radius: 10px;
+    color: white;
+}
+
+Input {
+    color: black;
+    border: none !important;
+}
+
+Input::placeholder {
+    color: black .6;
+}

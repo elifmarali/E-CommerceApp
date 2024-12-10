@@ -30,6 +30,9 @@ function Signin() {
       const response = await loginUser(values.email, values.password);
       if (response.status === 200) {
         login(response.data);
+        setTimeout(() => {
+          props.resetForm();
+        }, 2000);
       }
     } catch (err) {
       props.setErrors({ general: err.response.data.message });
@@ -45,7 +48,6 @@ function Signin() {
       <Navbar />
       <Grid sm={12} md={6} height="80vh">
         <Flex
-          gap={4}
           p="10"
           maxWidth="100vw"
           alignItems="center"
@@ -68,18 +70,17 @@ function Signin() {
               status,
               isSubmitting,
             }) => {
-              {
-                console.log(errors);
-              }
               return (
                 <Form backgroundColor="black">
-                  {errors.general && (
+                  {errors.general ? (
                     <Box>
                       <Alert status="error">
                         <AlertIcon />
-                        {errors.general}{" "}
+                        {errors.general}
                       </Alert>
                     </Box>
+                  ) : (
+                    ""
                   )}
                   <Flex
                     display="flex"
@@ -146,7 +147,12 @@ function Signin() {
                       )}
                     </FormControl>
                     <FormControl>
-                      <Checkbox variant="solid" color="white" fontSize="18">
+                      <Checkbox
+                        value={values.rememberMe}
+                        variant="solid"
+                        color="white"
+                        fontSize="18"
+                      >
                         Remember Me
                       </Checkbox>
                     </FormControl>
@@ -161,7 +167,7 @@ function Signin() {
                         color: "#e3fe55",
                         fontSize: "18px",
                       }}
-                      value={values.rememberMe}
+                      disabled={isSubmitting}
                     >
                       Login
                     </Button>

@@ -1,8 +1,21 @@
 import axios from "axios";
 
+const BASE_URL = "http://localhost:4000";
+const productURL = `${BASE_URL}/product`;
+const authURL = `${BASE_URL}/auth`;
 
-const productURL = "http://localhost:4000/product";
-const authURL = "http://localhost:4000/auth";
+/* axios.interceptors.request.use(function (config) {
+    const { origin } = new URL(config.url);
+    const allowedOrigins = [BASE_URL];
+    const token = localStorage.getItem('access-token');
+
+    if (allowedOrigins.includes(origin)) {
+        config.headers.authorization = token;
+    }
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+}) */
 
 export const getProductList = async ({ pageParam = 0 }) => {
     try {
@@ -27,4 +40,6 @@ export const loginUser = async (email, password) => {
         email,
         password,
     });
-}; 
+};
+
+
